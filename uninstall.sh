@@ -1,5 +1,5 @@
 cd ..
 killall php; killall screen
 rm -rf T-WSTP
-clear; cd ..
+clear; cd ../home
 echo " Done..."
