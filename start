@@ -7,7 +7,7 @@ fi
 rm -rf logremote.txt
 cd htdocs
 
-Screen -dmS wstp -L php -S 0.0.0.0:8080
+screen -dmS wstp -L php -S 0.0.0.0:8080
 screen -dmS remote -L -Logfile ../logremote.txt ssh -i ~/.ssh/t-wstp -o StrictHostKeyChecking=no -R 80:localhost:8080 localhost.run
 
 host=$(cat ../logremote.txt|grep tunneled|awk '{print $1}')
