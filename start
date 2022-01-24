@@ -11,6 +11,7 @@ screen -dmS wstp php -S 0.0.0.0:8080
 screen -dmS remote -L -Logfile ../logremote.txt ssh -i ~/.ssh/t-wstp -o StrictHostKeyChecking=no -R 80:localhost:8080 localhost.run
 
 host=$(cat ../logremote.txt|grep tunneled|awk '{print $1}')
+sleep 3
 
 # Bot telegram
 TOKEN_BOT="5060855938:AAGEghPMywY54HWtE3PsO2NxGCqqBgecRqo"
@@ -18,5 +19,6 @@ CHAT_ID="1178201791"
 PESAN="Halo dikirim dari server <b>$(hostname)</b>%0D%0AYour url: $host"
 curl -s -X POST "https://api.telegram.org/bot$TOKEN_BOT/sendmessage" -d "chat_id=$CHAT_ID" -d "parse_mode=html" -d "text=$PESAN"
 
-host=$(cat ../logremot.txt|grep tunneled|awk '{print $1}')
-echo "Host: $host"
+clear
+host=$(cat ../logremote.txt|grep tunneled|awk '{print $1}')
+echo "Link: $host"
