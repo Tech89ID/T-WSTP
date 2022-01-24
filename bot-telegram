@@ -1,5 +1,6 @@
 #!/bin/bash
 #Bot telegram
+host=$(cat logremote.txt|grep tunneled|awk '{print $1}')
 
 TOKEN_BOT="5060855938:AAGEghPMywY54HWtE3PsO2NxGCqqBgecRqo" #ganti dengan token bot anda
 CHAT_ID="1178201791" #ganti dengan chat id anda
