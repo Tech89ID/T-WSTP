@@ -1,0 +1,9 @@
+#!/bin/bash
+#Bot telegram
+
+TOKEN_BOT="5060855938:AAGEghPMywY54HWtE3PsO2NxGCqqBgecRqo" #ganti dengan token bot anda
+CHAT_ID="1178201791" #ganti dengan chat id anda
+
+PESAN="Halo dikirim dari server <b>$(hostname)</b>%0D%0AYour url: $host"
+curl -s -X POST "https://api.telegram.org/bot$TOKEN_BOT/sendmessage" -d "chat_id=$CHAT_ID" -d "parse_mode=html" -d "text=$PESAN"
+clear
