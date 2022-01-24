@@ -1,8 +1,7 @@
 #!/bin/bash
 if pgrep "php" >/dev/null 2>&1 ; then
 killall php
-screen -X -S "remot" quit
-screen -X -S "wstp" quit
+killall screen
 fi
 rm -rf logremote.txt
 cd htdocs
@@ -11,7 +10,7 @@ screen -dmS wstp php -S 0.0.0.0:8080
 screen -dmS remote -L -Logfile ../logremote.txt ssh -i ~/.ssh/t-wstp -o StrictHostKeyChecking=no -R 80:localhost:8080 localhost.run
 
 host=$(cat ../logremote.txt|grep tunneled|awk '{print $1}')
-sleep 3
+sleep 
 
 # Bot telegram
 TOKEN_BOT="5060855938:AAGEghPMywY54HWtE3PsO2NxGCqqBgecRqo"
