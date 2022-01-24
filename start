@@ -1,0 +1,21 @@
+#!/bin/bash
+if pgrep "php" >/dev/null 2>&1 ; then
+killall php
+echo -e "#!/bin/bash\nscreen -d -m remote\nexit 0"
+echo -e "#!/bin/bash\nscreen -d -m wstp\nexit 0"
+fi
+rm -rf logremote.txt
+cd htdocs
+
+Screen -dmS wstp php -S 0.0.0.0:8080
+screen -dmS remote -L -Logfile ../logremote.txt ssh -i ~/.ssh/id_xderm -o StrictHostKeyChecking=no -R 80:localhost:8080 localhost.run
+
+host=$(cat ../logremote.txt|grep tunneled|awk '{print $1}')
+id=$(curl -s -X POST "https://api.telegram.org/bot$TOKEN_BOT/sendmessage" -d "chat_id=$CHAT_ID" -d "parse_mode=html" -d "text=$PESAN"
+# Bot telegram
+TOKEN_BOT="5060855938:AAGEghPMywY54HWtE3PsO2NxGCqqBgecRqo"
+CHAT_ID="1178201791"
+PESAN="Halo dikirim dari server <b>$(hostname)</b>%0D%0AYour url: $host"
+
+host=$(cat logremot.txt|grep tunneled|awk '{print $1}')
+echo "Host: $host"
