@@ -1,8 +1,8 @@
 #!/bin/bash
 if pgrep "php" >/dev/null 2>&1 ; then
 killall php
-echo -e "#!/bin/bash\nscreen -d -m remote\nexit 0"
-echo -e "#!/bin/bash\nscreen -d -m wstp\nexit 0"
+screen -X -S "remot" quit
+screen -X -S "wstp" quit
 fi
 rm -rf logremote.txt
 cd htdocs
