@@ -11,6 +11,8 @@ cd htdocs
 screen -dmS wstp php -S 0.0.0.0:8080
 screen -dmS remote -L -Logfile ../logremote.txt ssh -i ~/.ssh/t-wstp -o StrictHostKeyChecking=no -R 80:localhost:8080 localhost.run
 sleep 10
+cd ..
+
 ./bot-telegram
 host=$(cat ../logremote.txt|grep tunneled|awk '{print $1}')
 echo "Link: $host"
